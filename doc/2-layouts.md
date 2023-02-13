@@ -84,6 +84,7 @@ fun Part1() {
     }
 }
 ```
+We can note the the `Row` component has two parameters : `horizontalArrangement` and `verticalAlignment`. These parameters are used to specify how the children of the `Row` composable are arranged.
 
 If we preview the composable we will have this result :
 
@@ -212,6 +213,8 @@ fun Part3() {
 }
 ```
 
+This is the result of the `Part3` composable added to the `App` composable :
+
 ![part3](assets/part3.png)
 
 
@@ -232,9 +235,12 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
-Compose TODO
-</details>
+With Jetpack Compose, there is no such thing as a `RelativeLayout`.
 
+Which means that the `Part4` composable will be the same as the `Part3` composable :
+
+![Part4](assets/part4.png)
+</details>
 
 <details>
 <summary>Jetpack XML solution</summary><br/>
@@ -249,7 +255,54 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
-Compose TODO
+For this task, we will use the `ListItem` composable provided by the `Material 3` library. This composable is used to display a list item with a title and left icon and a trailing icon.
+
+```kotlin
+@Composable
+@Preview(showBackground = true)
+fun Part5() {
+    val names by remember {
+        mutableStateOf(
+            listOf(
+                "Côtes-d'Armor", "Finistère", "Ille-et-Vilaine", "Morbihan"
+            )
+        )
+    }
+
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalAlignment = Alignment.Start,
+    ) {
+        Text(
+            text = "Breton's departments :",
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+        )
+        names.forEach { name ->
+            ListItem(headlineText = {
+                Text(name)
+            }, modifier = Modifier.fillMaxWidth(), leadingContent = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                )
+            },
+                shadowElevation = 4.dp
+            )
+        }
+    }
+}
+```
+
+In the above code, we can spot the use of `mutableStateOf` which is utilitary to store the state of our composable. We need to use this function to track states in Jetpack Compose. It allows us to update the UI when the state changes.
+
+To display the list, we used `forEach` instead of hardcoding the `ListItem` composable. This is a good practice to avoid repeating code.
+
+This is the result of the `Part5` composable added to the `App` composable :
+
+![Alt text](assets/part5.png)
 </details>
 
 
@@ -266,7 +319,22 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
-Compose TODO
+```kotlin
+        names.forEach { name ->
+            ListItem(headlineText = {
+-               Text(name)
++               Text("$name - Bretagne")
+            }, modifier = Modifier.fillMaxWidth(), leadingContent = {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                )
+            },
+                shadowElevation = 4.dp
+            )
+        }
+```
+
 </details>
 
 
