@@ -5,7 +5,6 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.*
 import androidx.activity.ComponentActivity
-import com.example.firstapp.R
 
 class MainActivityXML : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,12 +74,10 @@ fun part7(activity: MainActivityXML) {
 
     //Make a popup appear diplaying the department name and its population
     listView.setOnItemClickListener { parent, view, position, id ->
-        /*val cityNameMaybe = parent.getItemAtPosition(position)
+        //val cityNameMaybe = parent.getItemAtPosition(position.toInt())
 
-        val popup = PopupMenu(activity, view)
-        popup.menuInflater.inflate(R.menu.popup_listview, popup.menu)*/
         val inflater = LayoutInflater.from(parent.context)
-        val popupView = inflater.inflate(R.layout.list_interface, null)
+        val popupView = inflater.inflate(R.layout.popup_listview, null)
 
         val width = LinearLayout.LayoutParams.WRAP_CONTENT
         val height = LinearLayout.LayoutParams.WRAP_CONTENT
@@ -88,7 +85,16 @@ fun part7(activity: MainActivityXML) {
 
         val popupWindow = PopupWindow(popupView, width, height, focusable)
 
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)    }
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+        val tv1: TextView = popupView.findViewById(R.id.textView1)
+        tv1.text = arrayList[id.toInt()]
+        val tv2: TextView = popupView.findViewById(R.id.textView2)
+        tv2.text = arrayList[id.toInt()]
+
+    }
+
+
 
 }
 
