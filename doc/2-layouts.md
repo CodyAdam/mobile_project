@@ -26,6 +26,40 @@ your implementation for each question. The implementation can be done in Java or
 
 > **Task :** Create a Linear layout interface with a text on the left, then a button on the right
 
+<details>
+<summary>Jetpack Compose solution</summary>
+First to display something on the app for example a "Hello World" we need to create a `@Composable` function. This function will be called by the `setContent` function of the `MainActivity` class. The `setContent` function is called in the `onCreate` function of the `MainActivity` class.
+
+```kotlin
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            App()
+        }
+    }
+}
+
+@Composable
+@Preview(showBackground = true, showSystemUi = true)
+fun App() {
+    MaterialTheme {
+        Text(text = "Hello World")
+    }
+}
+```
+</details>
+
+<details>
+<summary>Jetpack XML solution</summary>
+TODO
+
+</details>
+
+
+
+
+
 ### 2
 
 > **Task :** Create a Linear layout interface with a text above, then a button below
