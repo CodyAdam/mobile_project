@@ -49,18 +49,18 @@ fun App() {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Part1()
-               Divider()
-               Part2()
-//                Divider()
-//                Part3()
-//                Divider()
-//                Part3()
-//                Divider()
-//                Part5()
-//                Divider()
-//                Part6()
-//                Divider()
-//                Part7()
+                Divider()
+                Part2()
+                Divider()
+                Part3()
+                Divider()
+                Part3()
+                Divider()
+                Part5()
+                Divider()
+                Part6()
+                Divider()
+                Part7()
             }
         }
     }
@@ -115,7 +115,6 @@ fun Part3() {
                 label = { Text("Text field") },
                 modifier = Modifier.weight(2f)
             )
-            // button min width is 48dp
             Button(onClick = {}, modifier = Modifier.weight(1f)) {
                 Text("Button !")
             }

@@ -87,7 +87,7 @@ fun Part1() {
 
 If we preview the composable we will have this result :
 
-![part1](assets/part1.png)
+![part1](assets/part1.1.png)
 
 We can then add this component to the `App` composable with some styling :
 
@@ -182,7 +182,39 @@ TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
-Compose TODO
+To make a more complicated layout, we can simplify the problem by breaking it down into smaller parts. All parts of the layout will be composed of a `Row` and a `Column` composable as we can see below :
+
+```kotlin
+@Composable
+@Preview(showBackground = true)
+fun Part3() {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalAlignment = Alignment.Start,
+    ) {
+        Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            TextField(
+                value = "",
+                onValueChange = {},
+                label = { Text("Text field") },
+                modifier = Modifier.weight(2f)
+            )
+            Button(onClick = {}, modifier = Modifier.weight(1f)) {
+                Text("Button !")
+            }
+        }
+    }
+}
+```
+
+![part3](assets/part3.png)
+
+
 </details>
 
 
