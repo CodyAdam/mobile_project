@@ -49,18 +49,18 @@ fun App() {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Part1()
-                Divider()
-                Part2()
-                Divider()
-                Part3()
-                Divider()
-                Part3()
-                Divider()
-                Part5()
-                Divider()
-                Part6()
-                Divider()
-                Part7()
+               Divider()
+               Part2()
+//                Divider()
+//                Part3()
+//                Divider()
+//                Part3()
+//                Divider()
+//                Part5()
+//                Divider()
+//                Part6()
+//                Divider()
+//                Part7()
             }
         }
     }
