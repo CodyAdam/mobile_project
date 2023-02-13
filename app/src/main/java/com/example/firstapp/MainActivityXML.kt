@@ -1,17 +1,13 @@
-package com.example.cartedeprsentation
+package com.example.firstapp
 
-import android.content.Context
-import android.content.Intent
-import android.graphics.Color.BLUE
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.*
 import androidx.activity.ComponentActivity
 import com.example.firstapp.R
 
-class MainActivity : ComponentActivity() {
+class MainActivityXML : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //val myButton: Button = findViewById(R.id.button4)
@@ -20,7 +16,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-fun part5(activity: MainActivity) {
+fun part5(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -37,7 +33,7 @@ fun part5(activity: MainActivity) {
 
 }
 
-fun part6(activity: MainActivity) {
+fun part6(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -58,7 +54,7 @@ fun part6(activity: MainActivity) {
 
 }
 
-fun part7(activity: MainActivity) {
+fun part7(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
