@@ -319,6 +319,9 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
+We could fall into the trap of hardcoding the suffix " - Bretagne" in the `ListItem` composable. But this is not a good practice. We should avoid repeating code as much as possible. This method is prone to errors and is not scalable.
+
+Instead we add the suffix before displaying the names.
 We only need to change the line :
 ```kotlin
 Text(name)
@@ -349,7 +352,151 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
-Compose TODO
+Let's break down this more complex task. The code is the following :
+
+```kotlin
+@Composable
+@Preview(showBackground = true)
+fun Part7() {
+    val deps by remember {
+        mutableStateOf(
+            mapOf(
+                "Côtes-d'Armor" to "descritpion...",
+                "Finistère" to "descritpion...",
+                "Ille-et-Vilaine" to "descritpion...",
+                "Morbihan" to "descritpion..."
+            )
+        )
+    }
+    var openModal by remember { mutableStateOf(false) }
+    var selected by remember { mutableStateOf("") }
+
+
+
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        horizontalAlignment = Alignment.Start,
+    ) {
+        Text(
+            text = "Departments informations :",
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+        )
+        deps.forEach { dep ->
+            ListItem(
+                headlineText = {
+                    Text("${dep.key} - Bretagne")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { selected = dep.key; openModal = true },
+                leadingContent = {
+                    Icon(
+                        Icons.Filled.Info,
+                        contentDescription = "Localized description",
+                    )
+                },
+                trailingContent = {
+                    Icon(
+                        Icons.Filled.KeyboardArrowRight,
+                        contentDescription = "Localized description",
+                    )
+                },
+                shadowElevation = 4.dp
+            )
+        }
+    }
+
+    if (openModal) {
+        ModalBottomSheet(
+            onDismissRequest = { openModal = false },
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalAlignment = Alignment.Start,
+            ) {
+                Text(
+                    text = "Informations about $selected",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(deps[selected] ?: "", modifier = Modifier.padding(bottom = 60.dp))
+            }
+        }
+    }
+}
+```
+
+First of all, we have the state `deps` which is no longer an `arraylist` but a `map`. This is because we need to store the description of each department.
+
+Then we have the states `openModal` and `selected` which are used to display the modal. The `openModal` state is used to know if the modal is open or not. The `selected` state is used to know which department is selected.
+
+
+
+Next the new thing we need to add is the `clickable` modifier. 
+```kotlin
+    ...
+    modifier = Modifier
+        .fillMaxWidth()
+        .clickable { selected = dep.key; openModal = true },
+    ...
+```
+
+This modifier is used to make a composable clickable. It takes a lambda as a parameter. In our case, we set the `selected` state to the current department and the `openModal` state to `true`.
+
+For visual indication that the item is clickable, we added an icon at the end of the `ListItem` composable.
+
+This is what we currently have :
+
+![part7.1](assets/part7.1.png)
+
+And finally, we have the modal display :
+
+```kotlin
+    if (openModal) {
+        ModalBottomSheet(
+            onDismissRequest = { openModal = false },
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalAlignment = Alignment.Start,
+            ) {
+                Text(
+                    text = "Informations about $selected",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(deps[selected] ?: "", modifier = Modifier.padding(bottom = 60.dp))
+            }
+        }
+    }
+```
+
+This modal is displayed when the `openModal` state is set to `true`. We used the `ModalBottomSheet` composable to display the modal provided by `Material 3` library.
+
+Inside the modal we display the name of the department and its description. The description is stored in the `deps` map.
+
+Note that we use the `onDismissRequest` lambda to set the `openModal` state to `false` when the modal is dismissed.
+
+Here is the result of the `Part7` when we click on the first item :
+
+![part7.2](assets/part7.2.png)
+
+
+
+
+
+
+
+
 </details>
 
 
