@@ -21,31 +21,31 @@ your implementation for each question. The implementation can be done in Java or
 6. [Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name](#6)
 7. [Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.](#7)
 
-
-# 1 
+## Implementations
+### 1 
 
 > **Task :** Create a Linear layout interface with a text on the left, then a button on the right
 
-# 2
+### 2
 
 > **Task :** Create a Linear layout interface with a text above, then a button below
 
-# 3
+### 3
 
 > **Task :** Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right
 
-# 4
+### 4
 
 > **Task :** Do the same as in the previous question with a Relative Layout
 
-# 5
+### 5
 
 > **Task :** Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments
 
-# 6
+### 6
 
 > **Task :** Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name
 
-# 7
+### 7
 
 > **Task :** Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.
