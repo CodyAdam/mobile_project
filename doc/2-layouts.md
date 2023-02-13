@@ -319,21 +319,19 @@ XML TODO
 <details>
 <summary>Jetpack Compose solution</summary><br/>
 
+We only need to change the line :
 ```kotlin
-        names.forEach { name ->
-            ListItem(headlineText = {
--               Text(name)
-+               Text("$name - Bretagne")
-            }, modifier = Modifier.fillMaxWidth(), leadingContent = {
-                Icon(
-                    Icons.Filled.Favorite,
-                    contentDescription = "Localized description",
-                )
-            },
-                shadowElevation = 4.dp
-            )
-        }
+Text(name)
 ```
+
+To the following :
+```kotlin
+Text("$name - Bretagne")
+```
+
+Here is a side by side comparison of the `Part5` and `Part6` composables :
+
+![part6](assets/part6.png)
 
 </details>
 
