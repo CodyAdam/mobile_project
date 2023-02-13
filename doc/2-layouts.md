@@ -104,10 +104,9 @@ fun App() {
 }
 ```
 
-The result is :
+The result is the following :
+
 ![part1.2](assets/part1.2.png)
-
-
 
 </details>
 
