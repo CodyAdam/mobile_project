@@ -35,9 +35,9 @@ The report of the practical work must mention clearly mention the names of the p
 > **Task :** Create a Linear layout interface with a text on the left, then a button on the right
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
-First to display something on the app for example a "Hello World". We need to create a `@Composable` function. This function will be called by the `setContent` function of the `MainActivity` class. The `setContent` function is called in the `onCreate` function of the `MainActivity` class.
+First to display something on the app, for example a "Hello World", we need to create a `@Composable` function. This function will be called by the `setContent` function of the `MainActivity` class. 
 
 ```kotlin
 class MainActivity : ComponentActivity() {
@@ -58,7 +58,9 @@ fun App() {
 }
 ```
 
-The `@Preview` annotation is used to display the UI in the Android Studio preview. This is the result:
+The `@Preview` annotation is used to display the UI in the Android Studio preview. 
+
+This is the result :
 
 ![Hello World](./assets/hello_world.png)
 
@@ -83,11 +85,11 @@ fun Part1() {
 }
 ```
 
-If we preview the composable we will have this result:
+If we preview the composable we will have this result :
 
 ![part1](assets/part1.png)
 
-We can then add this component to the `App` composable with some styling:
+We can then add this component to the `App` composable with some styling :
 
 ```kotlin
 
@@ -110,7 +112,7 @@ The result is :
 </details>
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 TODO
 </details>
@@ -120,7 +122,7 @@ TODO
 > **Task :** Create a Linear layout interface with a text above, then a button below
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 This is very similar to the previous task. We just need to use a `Column` composable instead of a `Row` composable. The `Column` composable is a layout composable that places its children vertically.
 
@@ -162,13 +164,14 @@ fun App() {
 
 ***Note** : The `Divider` composable is provided by the `Material 3` library. It is used to add a separator line between the two parts.*
 
-The result is :
+The result is the following :
+
 ![part2](assets/part2.png)
 
 </details>
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 TODO
 </details>
@@ -178,14 +181,14 @@ TODO
 > **Task :** Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 Compose TODO
 </details>
 
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 XML TODO
 </details>
@@ -196,14 +199,14 @@ XML TODO
 > **Task :** Do the same as in the previous question with a Relative Layout
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 Compose TODO
 </details>
 
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 XML TODO
 </details>
@@ -213,14 +216,14 @@ XML TODO
 > **Task :** Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 Compose TODO
 </details>
 
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 XML TODO
 </details>
@@ -230,14 +233,14 @@ XML TODO
 > **Task :** Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 Compose TODO
 </details>
 
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 XML TODO
 </details>
@@ -247,14 +250,14 @@ XML TODO
 > **Task :** Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.
 
 <details>
-<summary>Jetpack Compose solution</summary>
+<summary>Jetpack Compose solution</summary><br/>
 
 Compose TODO
 </details>
 
 
 <details>
-<summary>Jetpack XML solution</summary>
+<summary>Jetpack XML solution</summary><br/>
 
 XML TODO
 </details>
