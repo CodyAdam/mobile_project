@@ -11,8 +11,30 @@ class MainActivityXML : ComponentActivity() {
         super.onCreate(savedInstanceState)
         //val myButton: Button = findViewById(R.id.button4)
 
+        //part1(this)
+        //part2(this)
+        //part3(this)
+        //part4(this)
+        //part5(this)
+        //part6(this)
         part7(this)
     }
+}
+
+fun part1(activity: MainActivityXML) {
+    activity.setContentView(R.layout.button_side)
+}
+
+fun part2(activity: MainActivityXML) {
+    activity.setContentView(R.layout.button_bottom)
+}
+
+fun part3(activity: MainActivityXML) {
+    activity.setContentView(R.layout.simple_interface)
+}
+
+fun part4(activity: MainActivityXML) {
+    activity.setContentView(R.layout.simple_interface_relative)
 }
 
 fun part5(activity: MainActivityXML) {
@@ -64,6 +86,12 @@ fun part7(activity: MainActivityXML) {
     arrayList.add("Finistère")
     arrayList.add("Morbihan")
 
+    val arrayListPop = ArrayList<String>()
+    arrayListPop.add("1 060 199")
+    arrayListPop.add("598 814")
+    arrayListPop.add("909 028")
+    arrayListPop.add("750 863")
+
     for (i in 0 until arrayList.size) {
         arrayList[i] = (arrayList[i] + " - Bretagne")
     }
@@ -90,7 +118,7 @@ fun part7(activity: MainActivityXML) {
         val tv1: TextView = popupView.findViewById(R.id.textView1)
         tv1.text = arrayList[id.toInt()]
         val tv2: TextView = popupView.findViewById(R.id.textView2)
-        tv2.text = arrayList[id.toInt()]
+        tv2.text = arrayListPop[id.toInt()]
 
     }
 
