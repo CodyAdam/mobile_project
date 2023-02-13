@@ -20,8 +20,6 @@ the suffix " - Bretagne" at the end of each department name
 7. Finally, make it possible to click on each of the items in the list and display a popup with the
 display a popup with the name of the department and its population which will be stored in another arrayList or a map.
 
-
-
 <!-- 
 Your lab report should provide all the code and a clear explanation of your implementation for each question.
 your implementation for each question. The implementation can be done in Java or Kotlin. All the tools that you will have used for the realization of the TP must be mentioned and their mentioned and their use specified and justified. The report of the practical work must mention clearly mention the names of the participants and the number of the practical work and also clearly indicate the questions to which the answers refer. 
