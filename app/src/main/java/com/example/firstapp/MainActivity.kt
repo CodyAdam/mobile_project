@@ -126,8 +126,6 @@ fun Part3() {
 @Composable
 @Preview(showBackground = true)
 fun Part5() {
-    //Créer une interface avec une list View qui affichera le contenu d’une arraylist que
-    //vous aurez rempli auparavant avec le nom des 4 départements Breton
     val names by remember {
         mutableStateOf(
             listOf(
@@ -166,8 +164,6 @@ fun Part5() {
 @Composable
 @Preview(showBackground = true)
 fun Part6() {
-    //Créer une interface avec une list View qui affichera le contenu d’une arraylist que
-    //vous aurez rempli auparavant avec le nom des 4 départements Breton
     val names by remember {
         mutableStateOf(
             listOf(
@@ -207,8 +203,6 @@ fun Part6() {
 @Composable
 @Preview(showBackground = true)
 fun Part7() {
-    //Créer une interface avec une list View qui affichera le contenu d’une arraylist que
-    //vous aurez rempli auparavant avec le nom des 4 départements Breton
     val deps by remember {
         mutableStateOf(
             mapOf(
