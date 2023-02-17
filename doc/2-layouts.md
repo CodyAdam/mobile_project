@@ -62,7 +62,7 @@ The `@Preview` annotation is used to display the UI in the Android Studio previe
 
 This is the result :
 
-![Hello World](./assets/hello_world.png)
+![Hello World](assets/tp2/hello_world.png)
 
 In order to display a text on the left and a button on the right, we need to use a `Row` composable. The `Row` composable is a layout composable that places its children horizontally. 
 
@@ -88,7 +88,7 @@ We can note the the `Row` component has two parameters : `horizontalArrangement`
 
 If we preview the composable we will have this result :
 
-![part1](assets/part1.1.png)
+![part1](assets/tp2/part1.1.png)
 
 We can then add this component to the `App` composable with some styling :
 
@@ -107,7 +107,7 @@ fun App() {
 
 The result is the following :
 
-![part1.2](assets/part1.2.png)
+![part1.2](assets/tp2/part1.2.png)
 
 </details>
 
@@ -166,7 +166,7 @@ fun App() {
 
 The result is the following :
 
-![part2](assets/part2.png)
+![part2](assets/tp2/part2.png)
 
 </details>
 
@@ -215,7 +215,7 @@ fun Part3() {
 
 This is the result of the `Part3` composable added to the `App` composable :
 
-![part3](assets/part3.png)
+![part3](assets/tp2/part3.png)
 
 
 </details>
@@ -239,7 +239,7 @@ With Jetpack Compose, there is no such thing as a `RelativeLayout`.
 
 Which means that the `Part4` composable will be the same as the `Part3` composable :
 
-![Part4](assets/part4.png)
+![Part4](assets/tp2/part4.png)
 </details>
 
 <details>
@@ -302,7 +302,7 @@ To display the list, we used `forEach` instead of hardcoding the `ListItem` comp
 
 This is the result of the `Part5` composable added to the `App` composable :
 
-![Alt text](assets/part5.png)
+![Alt text](assets/tp2/part5.png)
 </details>
 
 
@@ -334,7 +334,7 @@ Text("$name - Bretagne")
 
 Here is a side by side comparison of the `Part5` and `Part6` composables :
 
-![part6](assets/part6.png)
+![part6](assets/tp2/part6.png)
 
 </details>
 
@@ -436,7 +436,7 @@ For visual indication that the item is clickable, we also added an icon at the e
 
 This is what we currently have :
 
-![part7.1](assets/part7.1.png)
+![part7.1](assets/tp2/part7.1.png)
 
 And finally, we have the modal display at the end of the composable.
 
@@ -552,7 +552,7 @@ fun Part7() {
 
 Here is the result of the `Part7` when we click on the first item :
 
-![part7.2](assets/part7.2.png)
+![part7.2](assets/tp2/part7.2.png)
 
 
 
