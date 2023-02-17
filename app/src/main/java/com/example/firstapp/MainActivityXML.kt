@@ -1,43 +1,51 @@
 package com.example.firstapp
 
+import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.*
 import androidx.activity.ComponentActivity
+import com.example.firstapp.ui.theme.RowAdapter
 
 class MainActivityXML : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //val myButton: Button = findViewById(R.id.button4)
 
-        //part1(this)
-        //part2(this)
-        //part3(this)
-        //part4(this)
-        //part5(this)
-        //part6(this)
-        part7(this)
+        //tp2_part1(this)
+        //tp2_part2(this)
+        //tp2_part3(this)
+        //tp2_part4(this)
+        //tp2_part5(this)
+        //tp2_part6(this)
+        //tp2Part7(this)
+        //tp3Part1(this)
+        //tp3Part2(this)
+        //tp3Part3(this)
+        //tp3Part4(this)
+        //tp3Part5(this)
+        //tp3Part6(this)
+        tp3Part7(this)
     }
 }
 
-fun part1(activity: MainActivityXML) {
+fun tp2Part1(activity: MainActivityXML) {
     activity.setContentView(R.layout.button_side)
 }
 
-fun part2(activity: MainActivityXML) {
+fun tp2Part2(activity: MainActivityXML) {
     activity.setContentView(R.layout.button_bottom)
 }
 
-fun part3(activity: MainActivityXML) {
+fun tp2Part3(activity: MainActivityXML) {
     activity.setContentView(R.layout.simple_interface)
 }
 
-fun part4(activity: MainActivityXML) {
+fun tp2Part4(activity: MainActivityXML) {
     activity.setContentView(R.layout.simple_interface_relative)
 }
 
-fun part5(activity: MainActivityXML) {
+fun tp2Part5(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -54,7 +62,7 @@ fun part5(activity: MainActivityXML) {
 
 }
 
-fun part6(activity: MainActivityXML) {
+fun tp2Part6(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -75,7 +83,7 @@ fun part6(activity: MainActivityXML) {
 
 }
 
-fun part7(activity: MainActivityXML) {
+fun tp2Part7(activity: MainActivityXML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -124,6 +132,124 @@ fun part7(activity: MainActivityXML) {
 
 
 
+}
+
+//Visualize at /data/data/com.example.firstapp/files/ADAMCodyALLAINArthur in Device File Explorer
+fun tp3Part1(activity: MainActivityXML) {
+    val fileName = "ADAMCodyALLAINArthur"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE)
+}
+
+//Visualize at /data/data/com.example.firstapp/files/ADAMCodyALLAINArthur in Device File Explorer
+fun tp3Part2(activity: MainActivityXML) {
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+}
+
+fun tp3Part3(activity: MainActivityXML) {
+    activity.setContentView(R.layout.display_filename)
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+    activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+        val tv: TextView = activity.findViewById(R.id.textView)
+        tv.text = it.readText()
+    }
+
+}
+
+fun tp3Part4(activity: MainActivityXML) {
+    activity.setContentView(R.layout.write_okcancel)
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+    activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+        val tv: TextView = activity.findViewById(R.id.editText)
+        tv.text = it.readText()
+    }
+    val button5: Button = activity.findViewById(R.id.button5)
+    button5.setOnClickListener {
+        activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+            val tv: TextView = activity.findViewById(R.id.editText)
+            it.write((tv.text).toString().toByteArray())
+        }
+    }
+    val button6: Button = activity.findViewById(R.id.button6)
+    button6.setOnClickListener {
+        activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+            val tv: TextView = activity.findViewById(R.id.editText)
+            tv.text = it.readText()
+        }
+    }
+}
+
+fun tp3Part5(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file)
+    val button7: Button = activity.findViewById(R.id.button7)
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+fun tp3Part6(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file_show_files)
+
+    val listView : ListView = activity.findViewById(R.id.listview1)
+    val button7: Button = activity.findViewById(R.id.button7)
+
+    val files : Array<String> = activity.fileList()
+    val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+    listView.adapter = arrayAdapter
+
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+            val files : Array<String> = activity.fileList()
+            val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+            listView.adapter = arrayAdapter
+        }
+    }
+}
+
+fun tp3Part7(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file_delete_files)
+
+    val listView : ListView = activity.findViewById(R.id.listview1)
+    val button7: Button = activity.findViewById(R.id.button7)
+
+    val files : Array<String> = activity.fileList()
+    val arrayAdapter : RowAdapter = RowAdapter(files, activity)
+    listView.adapter = arrayAdapter
+
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+            val files : Array<String> = activity.fileList()
+            val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+            listView.adapter = arrayAdapter
+        }
+    }
 }
 
 /*

@@ -4,5 +4,8 @@
     <string name="name">Name</string>
     <string name="button">Button</string>
     <string name="population">Population : </string>
-    <string name="title_activity_tp3_compose">ActivityTp3Compose</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="fichiers">Fichiers :</string>
+    <string name="supprimer">Supprimer</string>
 </resources>
