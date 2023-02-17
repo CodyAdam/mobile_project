@@ -33,7 +33,6 @@ class ActivityTp3Compose : ComponentActivity() {
 @Composable
 private fun App(context: Context) {
     var message by remember { mutableStateOf("") }
-    // file can be null, so we need to use a nullable type or File(context.filesDir, "adamallain.txt")
     var file by remember { mutableStateOf(File(context.filesDir, "adamallain.txt")) }
     var fileList by remember { mutableStateOf(context.filesDir.listFiles() ?: arrayOf()) }
 

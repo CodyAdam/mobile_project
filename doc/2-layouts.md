@@ -1,7 +1,9 @@
 # Handling of layouts (TP2)
 
-- **Cody ADAM** in charge of the Jetpack Compose project
-- **Arthur ALLAIN** in charge of the Jetpack XML project
+If you have not already done so, you can read the [Technology choices](doc/1-tech.md) to understand the choices and the management of the project.
+
+- **Cody ADAM** is in charge of the Jetpack Compose project
+- **Arthur ALLAIN** is in charge of the Jetpack XML project
 
 <!-- 
 TP report to be handed in to your teacher before : 26/02/2023 at 23h59
@@ -18,21 +20,21 @@ The report of the practical work must mention clearly mention the names of the p
 
 ## Tasks
 
-1. [Create a Linear layout interface with a text on the left, then a button on the right](#1)
-2. [Create a Linear layout interface with a text above, then a button below](#2)
-3. [Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right](#3)
-4. [Do the same as in the previous question with a Relative Layout](#4)
-5. [Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments](#5)
-6. [Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name](#6)
-7. [Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.](#7)
+- [1. Create a Linear layout interface with a text on the left, then a button on the right](#1-create-a-linear-layout-interface-with-a-text-on-the-left-then-a-button-on-the-right)
+- [2. Create a Linear layout interface with a text above, then a button below](#2-create-a-linear-layout-interface-with-a-text-above-then-a-button-below)
+- [3. Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right](#3-create-a-linear-layout-interface-with-a-label-on-top-then-a-fillable-text-on-the-left-below-a-fillable-text-on-the-left-and-a-button-on-the-right)
+- [4. Do the same as in the previous question with a Relative Layout](#4-do-the-same-as-in-the-previous-question-with-a-relative-layout)
+- [5. Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments](#5-create-an-interface-with-a-list-view-that-will-display-the-content-of-an-arraylist-that-you-have-that-you-will-have-filled-in-beforehand-with-the-names-of-the-4-breton-departments)
+- [6. Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name](#6-same-exercise-as-in-the-previous-question-but-add-at-the-end-of-the-display-of-each-department-name-the-suffix-the-suffix----bretagne-at-the-end-of-each-department-name)
+- [7. Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.](#7-finally-make-it-possible-to-click-on-each-of-the-items-in-the-list-and-display-a-popup-with-the-display-a-popup-with-the-name-of-the-department-and-its-population-which-will-be-stored-in-another-arraylist-or-a-map)
 
 ## Implementations
 
+Click to expand the solution you want to see.
+
 ***Note** : For the UI, we will use the **Material 3** library. This library offer some easy to use and already styled components.*
 
-### 1 
-
-> **Task :** Create a Linear layout interface with a text on the left, then a button on the right
+### 1. Create a Linear layout interface with a text on the left, then a button on the right
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -117,9 +119,7 @@ The result is the following :
 TODO
 </details>
 
-### 2
-
-> **Task :** Create a Linear layout interface with a text above, then a button below
+### 2. Create a Linear layout interface with a text above, then a button below
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -176,9 +176,7 @@ The result is the following :
 TODO
 </details>
 
-### 3
-
-> **Task :** Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right
+### 3. Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -228,9 +226,7 @@ XML TODO
 </details>
 
 
-### 4
-
-> **Task :** Do the same as in the previous question with a Relative Layout
+### 4. Do the same as in the previous question with a Relative Layout
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -248,9 +244,7 @@ Which means that the `Part4` composable will be the same as the `Part3` composab
 XML TODO
 </details>
 
-### 5
-
-> **Task :** Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments
+### 5. Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -312,9 +306,7 @@ This is the result of the `Part5` composable added to the `App` composable :
 XML TODO
 </details>
 
-### 6
-
-> **Task :** Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name
+### 6. Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -345,9 +337,7 @@ Here is a side by side comparison of the `Part5` and `Part6` composables :
 XML TODO
 </details>
 
-### 7
-
-> **Task :** Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.
+### 7. Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.
 
 <details>
 <summary>Jetpack Compose solution</summary><br/>
@@ -553,12 +543,6 @@ fun Part7() {
 Here is the result of the `Part7` when we click on the first item :
 
 ![part7.2](assets/tp2/part7.2.png)
-
-
-
-
-
-
 
 </details>
 
