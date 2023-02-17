@@ -32,7 +32,7 @@ class MainActivityCompose : ComponentActivity() {
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 @Preview(showBackground = true, heightDp = 1720)
-fun App() {
+private fun App() {
     MaterialTheme {
         Box(
             modifier = Modifier
