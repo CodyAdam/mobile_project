@@ -1,7 +1,7 @@
 
 # Introduction
 
-In this project, we will build a simple android application.
+In this project, we will build a simple android application using Android Jetpack.
 
 # Table of Contents
 
