@@ -235,7 +235,7 @@ fun tp3Part7(activity: MainActivityXML) {
     val button7: Button = activity.findViewById(R.id.button7)
 
     val files : Array<String> = activity.fileList()
-    val arrayAdapter : RowAdapter = RowAdapter(files, activity)
+    val arrayAdapter = RowAdapter(files, activity)
     listView.adapter = arrayAdapter
 
     button7.setOnClickListener {
@@ -246,7 +246,7 @@ fun tp3Part7(activity: MainActivityXML) {
             activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
             Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
             val files : Array<String> = activity.fileList()
-            val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+            val arrayAdapter = RowAdapter(files, activity)
             listView.adapter = arrayAdapter
         }
     }
