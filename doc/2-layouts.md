@@ -5,6 +5,8 @@ If you have not already done so, you can read the [Technology choices](doc/1-tec
 - **Cody ADAM** is in charge of the Jetpack Compose project
 - **Arthur ALLAIN** is in charge of the Jetpack XML project
 
+For the XML part, we have chosen to split the question in different functions in the code and display the needed one by uncommenting the line.
+
 <!-- 
 TP report to be handed in to your teacher before : 26/02/2023 at 23h59
 Link for the TP report: https://forms.gle/wmTKBZhJPXhckxJ46 
@@ -116,7 +118,51 @@ The result is the following :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-TODO
+First of all, we need to define our `MainActivity` by calling the `super` constructor and calling the fonction of the part `tp2_part1(this)` :
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        tp2_part1(this)
+    }
+}
+```
+
+In the function, we only need to display the `XML content` we want to show to the user :
+
+```kotlin
+fun tp2Part1(activity: MainActivityXML) {
+    activity.setContentView(R.layout.button_side)
+}
+```
+
+To display a text on the left and a button on the right in a `LinearLayout`, we can use this code :
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ClickButton"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:text="Click Button" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+```
+
+By wrapping the content with `wrap_content`, we make sure that the different views only occupy the space corresponding to their size. We also fix the `layout_width` of the `TextView` to a fix value
+because it is too small if we don't.
+
 </details>
 
 ### 2. Create a Linear layout interface with a text above, then a button below
