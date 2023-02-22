@@ -15,10 +15,10 @@ class MainActivityXML : ComponentActivity() {
         //tp2Part1(this)
         //tp2Part2(this)
         //tp2Part3(this)
-        tp2Part4(this)
+        //tp2Part4(this)
         //tp2Part5(this)
         //tp2Part6(this)
-        //tp2Part7(this)
+        tp2Part7(this)
         //tp3Part1(this)
         //tp3Part2(this)
         //tp3Part3(this)
@@ -95,10 +95,10 @@ fun tp2Part7(activity: MainActivityXML) {
     arrayList.add("Morbihan")
 
     val arrayListPop = ArrayList<String>()
-    arrayListPop.add("1 060 199")
-    arrayListPop.add("598 814")
-    arrayListPop.add("909 028")
-    arrayListPop.add("750 863")
+    arrayListPop.add(" 1 060 199")
+    arrayListPop.add(" 598 814")
+    arrayListPop.add(" 909 028")
+    arrayListPop.add(" 750 863")
 
     for (i in 0 until arrayList.size) {
         arrayList[i] = (arrayList[i] + " - Bretagne")

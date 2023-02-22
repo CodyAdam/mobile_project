@@ -517,7 +517,56 @@ This is the result of the `Part5` composable added to the `App` composable :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-XML TODO
+To use a `ListView` to display a list, we first need to declare it in an XML file : 
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/List"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</ListView>
+```
+
+Then, we need to fill it. We perform this action in the MainActivity :
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        
+        tp2Part5(this)
+        
+    }
+}
+
+fun tp2Part5(activity: MainActivityXML) {
+    activity.setContentView(R.layout.list_interface)
+
+    val listView : ListView = activity.findViewById(R.id.List)
+
+    val arrayList = ArrayList<String>()
+    arrayList.add("Ille-et-Vilaine")
+    arrayList.add("Côtes d'Armor")
+    arrayList.add("Finistère")
+    arrayList.add("Morbihan")
+
+    val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, arrayList)
+
+    listView.adapter = arrayAdapter
+
+}
+```
+
+We can see that we first declared and filled an `ArrayList` with the name of the departements of Brittany. We get the the `ListView` with `activity.findViewById(R.id.List)`,
+declare an `ArrayAdapter`, which is a way to turn our list into a XML layout predefine (here the `simple_list_item_1`) and change the `listView.adapter` to the new adapter we just declared.
+
+We obtain the following result :
+
+![](assets/tp2/part5_xml.png)
+
 </details>
 
 ### 6. Same exercise as in the previous question but add at the end of the display of each department name the suffix the suffix " - Bretagne" at the end of each department name
@@ -548,7 +597,45 @@ Here is a side by side comparison of the `Part5` and `Part6` composables :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-XML TODO
+Because both the elements (departement name and region name) are strings, we don't need to put two elements per row but just to concatenate both strings in one :
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        
+        tp2Part6(this)
+        
+    }
+}
+
+fun tp2Part6(activity: MainActivityXML) {
+    activity.setContentView(R.layout.list_interface)
+
+    val listView : ListView = activity.findViewById(R.id.List)
+
+    val arrayList = ArrayList<String>()
+    arrayList.add("Ille-et-Vilaine")
+    arrayList.add("Côtes d'Armor")
+    arrayList.add("Finistère")
+    arrayList.add("Morbihan")
+
+    for (i in 0 until arrayList.size) {
+        arrayList[i] = (arrayList[i] + " - Bretagne")
+    }
+
+    val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, arrayList)
+
+    listView.adapter = arrayAdapter
+
+}
+```
+
+We also use the same layout for the `ListView` as we did before because it works in the same way. We obtain the following result :
+
+![](assets/tp2/part6_xml.png)
+
 </details>
 
 ### 7. Finally, make it possible to click on each of the items in the list and display a popup with the display a popup with the name of the department and its population which will be stored in another arrayList or a map.
@@ -764,5 +851,143 @@ Here is the result of the `Part7` when we click on the first item :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-XML TODO
+Because the elements belong to a `ListView`, they are automatically clickable, we just need to define the event triggered when we click on one of the items :
+````kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+
+        tp2Part7(this)
+
+    }
+}
+
+fun tp2Part7(activity: MainActivityXML) {
+    activity.setContentView(R.layout.list_interface)
+
+    val listView : ListView = activity.findViewById(R.id.List)
+
+    val arrayList = ArrayList<String>()
+    arrayList.add("Ille-et-Vilaine")
+    arrayList.add("Côtes d'Armor")
+    arrayList.add("Finistère")
+    arrayList.add("Morbihan")
+
+    val arrayListPop = ArrayList<String>()
+    arrayListPop.add(" 1 060 199")
+    arrayListPop.add(" 598 814")
+    arrayListPop.add(" 909 028")
+    arrayListPop.add(" 750 863")
+
+    for (i in 0 until arrayList.size) {
+        arrayList[i] = (arrayList[i] + " - Bretagne")
+    }
+
+    val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, arrayList)
+
+    listView.adapter = arrayAdapter
+
+    //Make a popup appear diplaying the department name and its population
+    listView.setOnItemClickListener { parent, view, position, id ->
+        //val cityNameMaybe = parent.getItemAtPosition(position.toInt())
+
+        val inflater = LayoutInflater.from(parent.context)
+        val popupView = inflater.inflate(R.layout.popup_listview, null)
+
+        val width = LinearLayout.LayoutParams.WRAP_CONTENT
+        val height = LinearLayout.LayoutParams.WRAP_CONTENT
+        val focusable = true
+
+        val popupWindow = PopupWindow(popupView, width, height, focusable)
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+        val tv1: TextView = popupView.findViewById(R.id.textView1)
+        tv1.text = arrayList[id.toInt()]
+        val tv2: TextView = popupView.findViewById(R.id.textView2)
+        tv2.text = arrayListPop[id.toInt()]
+
+    }
+    
+}
+````
+
+We can see that we must declare anoter list with the population of each departement. We also need to declare a listener with `listView.setOnItemClickListener`, but it is a listener
+on the list, not on an element, that is why we get the needed informations in the listener like the id, parent, view or position.
+
+We also need to declare a new layout :
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1B000000"
+    android:padding="10dp"
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+    />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/population"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+```
+
+It corresponds to the popup displayed when you click on an item with a first `TextView` (the name of the departement) and a `LinearLayout` with two `TextView` (the string "Population" and the
+number of inhabitants).
+
+We define and show the popup with the layout :
+```kotlin
+val inflater = LayoutInflater.from(parent.context)
+val popupView = inflater.inflate(R.layout.popup_listview, null)
+
+val width = LinearLayout.LayoutParams.WRAP_CONTENT
+val height = LinearLayout.LayoutParams.WRAP_CONTENT
+val focusable = true
+
+val popupWindow = PopupWindow(popupView, width, height, focusable)
+
+popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+```
+
+Then, we set the information (name and population of the departement) with the id of the item clicked by getting the information in the differents lists declared :
+
+```kotlin
+val tv1: TextView = popupView.findViewById(R.id.textView1)
+tv1.text = arrayList[id.toInt()]
+val tv2: TextView = popupView.findViewById(R.id.textView2)
+tv2.text = arrayListPop[id.toInt()]
+```
+
+
+We finally obtain the following result when we click on an element in the list :
+
+![](assets/tp2/part7._xml.png)
+
 </details>
