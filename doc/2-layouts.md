@@ -7,6 +7,8 @@ If you have not already done so, you can read the [Technology choices](doc/1-tec
 
 For the XML part, we have chosen to split the question in different functions in the code and display the needed one by uncommenting the line.
 
+In the `AndroidManifest.xml`, to change the displayed Activity, it is need to change the ```<action android:name="android.intent.action.DEFAULT" />``` to ```<action android:name="android.intent.action.MAIN" />```
+
 <!-- 
 TP report to be handed in to your teacher before : 26/02/2023 at 23h59
 Link for the TP report: https://forms.gle/wmTKBZhJPXhckxJ46 
@@ -163,6 +165,10 @@ To display a text on the left and a button on the right in a `LinearLayout`, we 
 By wrapping the content with `wrap_content`, we make sure that the different views only occupy the space corresponding to their size. We also fix the `layout_width` of the `TextView` to a fix value
 because it is too small if we don't.
 
+We obtain the following result :
+
+![](assets/tp2/part1.1_xml.png)
+
 </details>
 
 ### 2. Create a Linear layout interface with a text above, then a button below
@@ -219,7 +225,47 @@ The result is the following :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-TODO
+We can do almost like we did previously but instead of using the `wrap_content`, we use `match_parent` on the width
+to make sure that the text and the button fit the width of the screen. By doing this, the text is button the text :
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        tp2Part2(this)
+    }
+}
+
+fun tp2Part2(activity: MainActivityXML) {
+    activity.setContentView(R.layout.button_bottom)
+}
+```
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ClickButtonBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click Button" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+</LinearLayout>
+```
+
+Because the orientation of the `LinearLayout` is vertical, it works well. We obtain the following result :
+
+![](assets/tp2/part1.2_xml.png)
+
 </details>
 
 ### 3. Create a Linear layout interface with a label on top, then a fillable text on the left below a fillable text on the left and a button on the right
@@ -268,7 +314,63 @@ This is the result of the `Part3` composable added to the `App` composable :
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-XML TODO
+To put a label above a group of two other elements, we need to put a `LinearLayout` into the `LinearLayout`
+to group the text to fill and the button. As we did in the first part, we put the text to fill next to the button 
+by wrapping the content with `wrap_content` on the width : 
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        tp2Part3(this)
+    }
+}
+
+fun tp2Part3(activity: MainActivityXML) {
+    activity.setContentView(R.layout.simple_interface)
+}
+```
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bienvenue"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button" />
+    </LinearLayout>
+</LinearLayout>
+```
+As we can see, we also wrap the height of the content particularly in the text label because it will
+occupy the whole screen if we fit the parent with `match_parent`.
+
+We obtain the following result :
+
+![](assets/tp2/part3_xml.png)
+
 </details>
 
 
@@ -287,7 +389,73 @@ Which means that the `Part4` composable will be the same as the `Part3` composab
 <details>
 <summary>Jetpack XML solution</summary><br/>
 
-XML TODO
+With a `RelativeLayout`, we can use only one `Layout` to put all the elements. We just need to precize
+the position of every element depending on the other.
+
+```kotlin
+class MainActivityXML : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        tp2Part4(this)
+    }
+}
+
+fun tp2Part4(activity: MainActivityXML) {
+    activity.setContentView(R.layout.simple_interface_relative)
+}
+```
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bienvenue"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/name"
+        android:layout_below="@id/Label"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/button4"
+    />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/Label"
+    />
+
+</RelativeLayout>
+```
+
+As we can see, we define the first `TextView` with no indication about the placement, it will be used
+as a reference for the others. Then, we define `EditText` view by precising that it is below the `TextView`
+called Label with `layout_below="@id/Label"`, aligned on the left with `layout_alignParentStart="true"` and is on the left of the button with
+`layout_toStartOf="@id/button4"`.
+
+For the button, this is almost the same thing, by precizing that it is on the right with `layout_alignParentEnd="true"`
+and below the text with `layout_below="@id/Label"`. Here we don't need to precise that the button is on the left
+of the text to fill, it is implicit.
+
+We obtain the following result :
+
+![](assets/tp2/part4_xml.png)
+
 </details>
 
 ### 5. Create an interface with a list View that will display the content of an arraylist that you have that you will have filled in beforehand with the names of the 4 Breton departments

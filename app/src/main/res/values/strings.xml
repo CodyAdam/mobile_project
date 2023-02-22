@@ -8,4 +8,6 @@
     <string name="ok">Ok</string>
     <string name="fichiers">Fichiers :</string>
     <string name="supprimer">Supprimer</string>
+    <string name="title_activity_tp2_compose">A</string>
+    <string name="title_activity_tp3_compose">A</string>
 </resources>

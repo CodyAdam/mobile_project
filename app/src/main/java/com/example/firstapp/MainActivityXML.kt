@@ -12,10 +12,10 @@ class MainActivityXML : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tp2Part1(this)
+        //tp2Part1(this)
         //tp2Part2(this)
         //tp2Part3(this)
-        //tp2Part4(this)
+        tp2Part4(this)
         //tp2Part5(this)
         //tp2Part6(this)
         //tp2Part7(this)
