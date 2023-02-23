@@ -371,7 +371,7 @@ To display the label and the buttons we use the following XML layout :
 </LinearLayout>
 ````
 
-As we saw in the previous TP, We have a `LinearLayout` inside an other to put the two buttons next to each other
+As we saw in the previous TP, we have a `LinearLayout` inside an other to put the two buttons next to each other
 and `wrap_content` on the height and the widht to make sure they can stand next to each other.
 
 We obtain the following result :
@@ -547,6 +547,177 @@ We can see the files we created in the previous parts and some test files.
 
 ### 7. Add a delete button
 
+The code of the MainActivity is almost the same, the only difference is that instead of using an `ArrayAdapter` as
+we did in the previous part, we use a custom adapter called `RowAdapter` which allow us to put the content we want
+in each row of the `ListView`.
 
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part7(this)
+
+  }
+}
+
+fun tp3Part7(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file_delete_files)
+
+    val listView : ListView = activity.findViewById(R.id.listview1)
+    val button7: Button = activity.findViewById(R.id.button7)
+
+    val files : Array<String> = activity.fileList()
+    val arrayAdapter = RowAdapter(files, activity)
+    listView.adapter = arrayAdapter
+
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+            val files : Array<String> = activity.fileList()
+            val arrayAdapter = RowAdapter(files, activity)
+            listView.adapter = arrayAdapter
+        }
+    }
+}
+````
+
+The XML layout is the exact same :
+
+````XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fichiers"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="20sp"
+        />
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+</LinearLayout>
+````
+
+The difference is that we have the new class `RowAdapter` and the XML layout corresponding to a row :
+
+````kotlin
+class RowAdapter(list: Array<String>, context: MainActivityXML) : BaseAdapter() {
+    private var list = list
+    private var context = context
+
+    override fun getCount() : Int {
+        return list.size
+    }
+
+    override fun getItem(pos: Int): Any? {
+        return list[pos]
+    }
+
+    override fun getItemId(pos: Int) : Long {
+        return 0
+        //just return 0 if your list items do not have an Id variable.
+    }
+
+    @SuppressLint("ViewHolder")
+    override fun getView(position : Int, convertView : View?, parent : ViewGroup) : View {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_view_row, parent, false)
+
+        //Handle TextView and display string from your list
+        val tv : TextView = view.findViewById(R.id.textView3)
+        tv.text = list[position];
+
+        //Handle buttons and add onClickListeners
+        val btn : Button = view.findViewById(R.id.button8)
+
+        btn.setOnClickListener {
+            //delete file
+            context.deleteFile(tv.text.toString())
+            Toast.makeText(context, "File deleted !", Toast.LENGTH_SHORT).show()
+            val listView : ListView = context.findViewById(R.id.listview1)
+            val files : Array<String> = context.fileList()
+            val arrayAdapter = RowAdapter(files, context)
+            listView.adapter = arrayAdapter
+        }
+
+        return view;
+    }
+}
+````
+
+As we can see, we just have to implement the methods of the extended class : `BaseAdapter`. In the method `getView`,
+we define the layout of a row that we will use (described below), the text of each `TextView`, wich correspond to
+the position of each element in the list, and the button "Delete".
+
+We put a listener on the button and we use the `deleteFile` method with the name of the `TextView` text and inform
+the user that the file as been deleted with a popup. Then, we refresh the list by getting the files and setting the
+adapter inside the context of the view.
+
+We use this simple XML layout :
+
+````XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="40sp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:textSize="17sp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="10sp"
+        android:layout_height="40sp"
+        android:layout_weight="1"
+        android:text="@string/supprimer" />
+</LinearLayout>
+````
+
+We can notice that we fix the width of the `TextView` and the `Button` because otherwise, the size of the button
+would be different for each row.
+
+We obtain the following result before deleting :
+
+![](assets/tp3/part7_1_xml.jpg)
+
+We obtain the following result when deleting :
+
+![](assets/tp3/part7_2_xml.jpg)
+
+We can see that the file "New File" has been deleted and the list has been refreshed.
 
 </details>

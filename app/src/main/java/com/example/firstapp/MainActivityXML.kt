@@ -24,8 +24,8 @@ class MainActivityXML : ComponentActivity() {
         //tp3Part3(this)
         //tp3Part4(this)
         //tp3Part5(this)
-        tp3Part6(this)
-        //tp3Part7(this)
+        //tp3Part6(this)
+        tp3Part7(this)
     }
 }
 
