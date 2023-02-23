@@ -1,4 +1,4 @@
-# Handling of layouts (TP2)
+# Handling of layouts (TP3)
 
 - **Cody ADAM** in charge of the Jetpack Compose project
 - **Arthur ALLAIN** in charge of the Jetpack XML project
