@@ -3,13 +3,18 @@
 - **Cody ADAM** in charge of the Jetpack Compose project
 - **Arthur ALLAIN** in charge of the Jetpack XML project
 
-
+The explanation of the tasks as been detailled in the XML part for every question and a global explanation for the
+compose part.
 
 ## Tasks
 
 - [1. Create a file in the application storage](#1-create-a-file-in-the-application-storage)
 - [2. Write content in the previous file](#2-write-content-in-the-previous-file)
 - [3. Display the file content](#3-display-the-file-content)
+- [4. Create a simple interface with editable text](#4-create-a-simple-interface-with-editable-text)
+- [5. Create a file with OK button](#5-create-a-file-with-ok-button)
+- [6. Display the saved files](#6-display-the-saved-files)
+- [7. Add a delete button](#7-add-a-delete-button)
 
 ## Implementations
 
@@ -278,5 +283,270 @@ fun tp3Part3(activity: MainActivityXML) {
 We obtain the following result :
 
 ![](assets/tp3/part3_xml.jpg)
+
+### 4. Create a simple interface with editable text
+
+As we did in the previous part, we must initialize a file by creating it and filling it with some content.
+
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part4(this)
+
+  }
+}
+
+fun tp3Part4(activity: MainActivityXML) {
+    activity.setContentView(R.layout.write_okcancel)
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+    activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+        val tv: TextView = activity.findViewById(R.id.editText)
+        tv.text = it.readText()
+    }
+    val button5: Button = activity.findViewById(R.id.button5)
+    button5.setOnClickListener {
+        activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+            val tv: TextView = activity.findViewById(R.id.editText)
+            it.write((tv.text).toString().toByteArray())
+        }
+    }
+    val button6: Button = activity.findViewById(R.id.button6)
+    button6.setOnClickListener {
+        activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+            val tv: TextView = activity.findViewById(R.id.editText)
+            tv.text = it.readText()
+        }
+    }
+}
+````
+
+We can see that after initializing the file, we put a listener on two buttons with the method `setOnClickListener`
+to perform an action we clicking on the button. 
+
+On the first button (the OK button), we write a file with the same name as the previous file but with the content
+of the editable text. It will overwrite the current file. We do this by getting the view with `findViewById` and writing the text turned into a byte array
+with `toByteArray`.
+
+On the second button (the Cancel button), we get the content and set the text with the content of the file as we
+did in the part3. By doing that, we just reset the text if it has been edited. 
+
+To display the label and the buttons we use the following XML layout :
+
+````XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel" />
+    </LinearLayout>
+</LinearLayout>
+````
+
+As we saw in the previous TP, We have a `LinearLayout` inside an other to put the two buttons next to each other
+and `wrap_content` on the height and the widht to make sure they can stand next to each other.
+
+We obtain the following result :
+
+![](assets/tp3/part4_1_xml.png)
+
+![part4_2_xml.png](assets/tp3/part4_2_xml.png)
+
+
+### 5. Create a file with OK button
+
+For this part, je just have to put a listener on the OK button and check if the content is blank or not by getting
+the content of the `TextView` with `findViewById` and `tv.text`, and use the method `isBlank`.
+
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part5(this)
+
+  }
+}
+
+fun tp3Part5(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file)
+    val button7: Button = activity.findViewById(R.id.button7)
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+````
+
+If the file name entered is blank, we display a little popup to warn the user that the name is blank and we
+do not save the file. If the name entered is not blank, we save the file with `openFileOutput` with the text of
+the `TextView`.
+
+We use the following XML layout :
+
+````XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok" />
+</LinearLayout>
+````
+
+We obtain the following result when the text is correct :
+
+![](assets/tp3/part5_1_xml.png)
+
+We obtain the following result when the text is blank :
+
+![](assets/tp3/part5_2_xml.png)
+
+We can check the files in the device file explorer :
+
+![part5_3_xml.png](assets/tp3/part5_3_xml.png)
+
+We can see the new file with the correct name but no file with a blank name.
+
+### 6. Display the saved files
+
+We just have to add a `ListView` to the XML layout and fill it with the files of our internal storage.
+
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part6(this)
+
+  }
+}
+
+fun tp3Part6(activity: MainActivityXML) {
+    activity.setContentView(R.layout.create_file_show_files)
+
+    val listView : ListView = activity.findViewById(R.id.listview1)
+    val button7: Button = activity.findViewById(R.id.button7)
+
+    val files : Array<String> = activity.fileList()
+    val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+    listView.adapter = arrayAdapter
+
+    button7.setOnClickListener {
+        val tv: TextView = activity.findViewById(R.id.editText2)
+        if(tv.text.toString().isBlank()) {
+            Toast.makeText(activity, "Fill the blank !", Toast.LENGTH_SHORT).show()
+        } else {
+            activity.baseContext.openFileOutput(tv.text.toString(), Context.MODE_PRIVATE)
+            Toast.makeText(activity, "File created !", Toast.LENGTH_SHORT).show()
+            val files : Array<String> = activity.fileList()
+            val arrayAdapter : ArrayAdapter<String> = ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, files)
+            listView.adapter = arrayAdapter
+        }
+    }
+}
+````
+
+We get the internal files with `fileList`, declare an adapter with the list of the files and set the adapter of the
+`ListView` with the new one. Then, we just do what we did in the previous part (part 5), but when we add a new file,
+we get the internal files and set the adapter to refresh the `ListView`.
+
+We use the following layout which is just the same as before but with a `ListView` and a `TextView` to put the word "Fichiers" :
+
+````XML
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fichiers"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="20sp"
+        />
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+</LinearLayout>
+````
+
+We obtain the following result :
+
+![](assets/tp3/part6_xml.jpg)
+
+We can see the files we created in the previous parts and some test files.
+
+### 7. Add a delete button
+
+
 
 </details>
