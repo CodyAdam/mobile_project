@@ -7,6 +7,9 @@
 
 ## Tasks
 
+- [1. Create a file in the application storage](#1-create-a-file-in-the-application-storage)
+- [2. Write content in the previous file](#2-write-content-in-the-previous-file)
+- [3. Display the file content](#3-display-the-file-content)
 
 ## Implementations
 
@@ -191,9 +194,89 @@ And that's it, we have a fully working app with Jetpack Compose UI and logic.
 <summary>Jetpack XML solution</summary>
 
 
-### Compose Project
+### 1. Create a file in the application storage
 
-![Compose Demo](assets/tp3/demo.gif)
+We just need to create the file with the existing method `openFileOutput`:
 
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    
+    tp3Part1(this)
+
+  }
+}
+
+fun tp3Part1(activity: MainActivityXML) {
+    val fileName = "ADAMCodyALLAINArthur"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE)
+}
+````
+
+We obtain the following result in the file folder at /data/data/com.example.firstapp/files/ADAMCodyALLAINArthur :
+
+![part1_xml.png](assets/tp3/part1_xml.png)
+
+### 2. Write content in the previous file
+
+We just have to create the file as we did previously and use the `use` method whend creating the file
+to put some content in it.
+
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part2(this)
+
+  }
+}
+
+fun tp3Part2(activity: MainActivityXML) {
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+}
+````
+
+We obtain the following file :
+
+![part2_xml.png](assets/tp3/part2_xml.png)
+
+### 3. Display the file content
+
+To perform this action, we just have to write in a file just as we did before (or choose an existing file)
+and open it with the `openFileInput` to put its content into a `TextView` to allow us to see its content.
+
+````kotlin
+class MainActivityXML : ComponentActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    tp3Part3(this)
+
+  }
+}
+
+fun tp3Part3(activity: MainActivityXML) {
+    activity.setContentView(R.layout.display_filename)
+    val fileName = "ADAMCodyALLAINArthur"
+    val fileContent = "Bonjour MOUNIER Romain !"
+    activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
+        it.write(fileContent.toByteArray())
+    }
+    activity.baseContext.openFileInput("ADAMCodyALLAINArthur").bufferedReader().use {
+        val tv: TextView = activity.findViewById(R.id.textView)
+        tv.text = it.readText()
+    }
+}
+````
+
+We obtain the following result :
+
+![](assets/tp3/part3_xml.jpg)
 
 </details>
