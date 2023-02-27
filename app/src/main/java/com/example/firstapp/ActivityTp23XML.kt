@@ -8,44 +8,44 @@ import android.widget.*
 import androidx.activity.ComponentActivity
 import com.example.firstapp.ui.theme.RowAdapter
 
-class MainActivityXML : ComponentActivity() {
+class ActivityTp23XML : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //tp2Part1(this)
-        //tp2Part2(this)
-        //tp2Part3(this)
-        //tp2Part4(this)
-        //tp2Part5(this)
-        //tp2Part6(this)
-        //tp2Part7(this)
-        //tp3Part1(this)
-        //tp3Part2(this)
-        //tp3Part3(this)
-        //tp3Part4(this)
-        //tp3Part5(this)
-        //tp3Part6(this)
-        tp3Part7(this)
+        tp2Part1(this)
+        // tp2Part2(this)
+        // tp2Part3(this)
+        // tp2Part4(this)
+        // tp2Part5(this)
+        // tp2Part6(this)
+        // tp2Part7(this)
+        // tp3Part1(this)
+        // tp3Part2(this)
+        // tp3Part3(this)
+        // tp3Part4(this)
+        // tp3Part5(this)
+        // tp3Part6(this)
+        // tp3Part7(this)
     }
 }
 
-fun tp2Part1(activity: MainActivityXML) {
+fun tp2Part1(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.button_side)
 }
 
-fun tp2Part2(activity: MainActivityXML) {
+fun tp2Part2(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.button_bottom)
 }
 
-fun tp2Part3(activity: MainActivityXML) {
+fun tp2Part3(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.simple_interface)
 }
 
-fun tp2Part4(activity: MainActivityXML) {
+fun tp2Part4(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.simple_interface_relative)
 }
 
-fun tp2Part5(activity: MainActivityXML) {
+fun tp2Part5(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -62,7 +62,7 @@ fun tp2Part5(activity: MainActivityXML) {
 
 }
 
-fun tp2Part6(activity: MainActivityXML) {
+fun tp2Part6(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -83,7 +83,7 @@ fun tp2Part6(activity: MainActivityXML) {
 
 }
 
-fun tp2Part7(activity: MainActivityXML) {
+fun tp2Part7(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.list_interface)
 
     val listView : ListView = activity.findViewById(R.id.List)
@@ -135,13 +135,13 @@ fun tp2Part7(activity: MainActivityXML) {
 }
 
 //Visualize at /data/data/com.example.firstapp/files/ADAMCodyALLAINArthur in Device File Explorer
-fun tp3Part1(activity: MainActivityXML) {
+fun tp3Part1(activity: ActivityTp23XML) {
     val fileName = "ADAMCodyALLAINArthur"
     activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE)
 }
 
 //Visualize at /data/data/com.example.firstapp/files/ADAMCodyALLAINArthur in Device File Explorer
-fun tp3Part2(activity: MainActivityXML) {
+fun tp3Part2(activity: ActivityTp23XML) {
     val fileName = "ADAMCodyALLAINArthur"
     val fileContent = "Bonjour MOUNIER Romain !"
     activity.baseContext.openFileOutput(fileName, Context.MODE_PRIVATE).use {
@@ -149,7 +149,7 @@ fun tp3Part2(activity: MainActivityXML) {
     }
 }
 
-fun tp3Part3(activity: MainActivityXML) {
+fun tp3Part3(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.display_filename)
     val fileName = "ADAMCodyALLAINArthur"
     val fileContent = "Bonjour MOUNIER Romain !"
@@ -163,7 +163,7 @@ fun tp3Part3(activity: MainActivityXML) {
 
 }
 
-fun tp3Part4(activity: MainActivityXML) {
+fun tp3Part4(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.write_okcancel)
     val fileName = "ADAMCodyALLAINArthur"
     val fileContent = "Bonjour MOUNIER Romain !"
@@ -190,7 +190,7 @@ fun tp3Part4(activity: MainActivityXML) {
     }
 }
 
-fun tp3Part5(activity: MainActivityXML) {
+fun tp3Part5(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.create_file)
     val button7: Button = activity.findViewById(R.id.button7)
     button7.setOnClickListener {
@@ -204,7 +204,7 @@ fun tp3Part5(activity: MainActivityXML) {
     }
 }
 
-fun tp3Part6(activity: MainActivityXML) {
+fun tp3Part6(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.create_file_show_files)
 
     val listView : ListView = activity.findViewById(R.id.listview1)
@@ -228,7 +228,7 @@ fun tp3Part6(activity: MainActivityXML) {
     }
 }
 
-fun tp3Part7(activity: MainActivityXML) {
+fun tp3Part7(activity: ActivityTp23XML) {
     activity.setContentView(R.layout.create_file_delete_files)
 
     val listView : ListView = activity.findViewById(R.id.listview1)
@@ -251,21 +251,3 @@ fun tp3Part7(activity: MainActivityXML) {
         }
     }
 }
-
-/*
-@Composable
-fun Greeting(name: String) {
-    Surface(color = Color(BLUE)) {
-        Text(text = "Hi, my name is $name!", modifier = Modifier.padding(24.dp))
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Box {
-        Greeting("Cody") {
-        }
-    }
-}*/

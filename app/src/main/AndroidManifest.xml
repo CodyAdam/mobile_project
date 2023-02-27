@@ -9,30 +9,28 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CarteDePrésentation"
+        android:theme="@style/Theme.firstapp"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityTp3Compose"
+            android:name=".ActivityTp2Compose"
             android:exported="true"
-            android:label="@string/title_activity_tp2_compose"
-            android:theme="@style/Theme.CarteDePrésentation">
+            android:theme="@style/Theme.firstapp">
             <intent-filter>
-                <action android:name="android.intent.action.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name=".ActivityTp3Compose"-->
-<!--            android:exported="true"-->
-<!--            android:label="@string/title_activity_tp3_compose"-->
-<!--            android:theme="@style/Theme.CarteDePrésentation">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
         <activity
-            android:name=".MainActivityXML"
+            android:name=".ActivityTp3Compose"
+            android:exported="true"
+            android:theme="@style/Theme.firstapp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityTp23XML"
             android:exported="true"
             android:theme="@style/Theme.CarteDePrésentation">
             <intent-filter>
@@ -41,5 +39,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

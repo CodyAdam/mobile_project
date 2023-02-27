@@ -1,17 +1,15 @@
 package com.example.firstapp.ui.theme
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
 import android.content.Intent.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.firstapp.MainActivityXML
+import com.example.firstapp.ActivityTp23XML
 import com.example.firstapp.R
 
-class RowAdapter(list: Array<String>, context: MainActivityXML) : BaseAdapter() {
+class RowAdapter(list: Array<String>, context: ActivityTp23XML) : BaseAdapter() {
     private var list = list
     private var context = context
 

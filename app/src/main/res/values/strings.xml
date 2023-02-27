@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Carte de présentation</string>
+    <string name="app_name">First app</string>
     <string name="bienvenue">Bienvenue</string>
     <string name="name">Name</string>
     <string name="button">Button</string>
@@ -8,6 +8,6 @@
     <string name="ok">Ok</string>
     <string name="fichiers">Fichiers :</string>
     <string name="supprimer">Supprimer</string>
-    <string name="title_activity_tp2_compose">A</string>
-    <string name="title_activity_tp3_compose">A</string>
+    <string name="title_activity_tp2_compose">Tp2 Compose</string>
+    <string name="title_activity_tp3_compose">Tp3 Compose</string>
 </resources>
