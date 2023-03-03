@@ -8,6 +8,7 @@
     <string name="ok">Ok</string>
     <string name="fichiers">Fichiers :</string>
     <string name="supprimer">Supprimer</string>
-    <string name="title_activity_tp2_compose">Tp2 Compose</string>
-    <string name="title_activity_tp3_compose">Tp3 Compose</string>
+    <string name="title_activity_tp2_compose">ActivityTp2Compose</string>
+    <string name="title_activity_tp3_compose">ActivityTp3Compose</string>
+    <string name="title_activity_tp4_compose">ActivityTp4Compose</string>
 </resources>
